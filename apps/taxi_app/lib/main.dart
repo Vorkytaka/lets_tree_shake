@@ -5,23 +5,42 @@ import 'package:provider/provider.dart';
 import 'package:taxi_app/main_screen.dart';
 import 'package:utils/utils.dart';
 
+BankManager? get bankManager {
+  // ignore: unnecessary_const
+  const isBankEnabled = const bool.fromEnvironment('BANK_ENABLED');
+  if (!isBankEnabled) {
+    return null;
+  }
+
+  return BankManagerImpl(
+    repository: BankRepositoryMock(),
+    formatter: FormatterImpl(),
+    bankNavigator: BankNavigatorMock(),
+  );
+}
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MyApp(
+      bankManager: bankManager,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final BankManager? bankManager;
+
+  const MyApp({
+    required this.bankManager,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<BankManager>(
-          create: (context) => BankManagerImpl(
-            repository: BankRepositoryMock(),
-            formatter: FormatterImpl(),
-            bankNavigator: BankNavigatorMock(),
-          ),
+        Provider<BankManager?>.value(
+          value: bankManager,
         ),
       ],
       child: MaterialApp(
@@ -29,7 +48,6 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const MainScreen(),
         },
-        home: const Scaffold(),
       ),
     );
   }
