@@ -1,6 +1,6 @@
+import 'package:bank_contract/bank_contract.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxi_app/bank/bank_manager.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});

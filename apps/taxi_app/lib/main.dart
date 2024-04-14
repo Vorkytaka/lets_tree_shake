@@ -1,10 +1,9 @@
+import 'package:bank_contract/bank_contract.dart';
+import 'package:bank_module/bank_module.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxi_app/bank/bank_manager.dart';
-import 'package:taxi_app/bank/navigator/bank_navigator.dart';
-import 'package:taxi_app/bank/repository/bank_repository.dart';
 import 'package:taxi_app/main_screen.dart';
-import 'package:taxi_app/utils/formatter.dart';
+import 'package:utils/utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<BankManager>(
-          create: (context) => BankManager(
+          create: (context) => BankManagerImpl(
             repository: BankRepositoryMock(),
             formatter: FormatterImpl(),
             bankNavigator: BankNavigatorMock(),

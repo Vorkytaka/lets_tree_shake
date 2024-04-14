@@ -1,24 +1,27 @@
-import '../utils/formatter.dart';
-import 'model/bank_registration_result.dart';
+import 'package:bank_contract/bank_contract.dart';
+import 'package:utils/utils.dart';
+
 import 'navigator/bank_navigator.dart';
 import 'repository/bank_repository.dart';
 
-class BankManager {
+class BankManagerImpl implements BankManager {
   final BankRepository repository;
   final Formatter formatter;
   final BankNavigator bankNavigator;
 
-  const BankManager({
+  const BankManagerImpl({
     required this.repository,
     required this.formatter,
     required this.bankNavigator,
   });
 
+  @override
   Future<bool> get hasBankAccount async {
     final account = await repository.getAccount();
     return account != null;
   }
 
+  @override
   Future<String?> get balance async {
     final currentBalance = await repository.getBalance();
 
@@ -29,10 +32,12 @@ class BankManager {
     return formatter.formatCurrency(currentBalance);
   }
 
+  @override
   Future<BankRegistrationResult> startRegistrationFlow() {
     return bankNavigator.startRegistrationFlow();
   }
 
+  @override
   Future<void> openBankProfile() async {
     final hasAccount = await hasBankAccount;
 

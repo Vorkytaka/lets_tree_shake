@@ -1,4 +1,4 @@
-import '../model/bank_registration_result.dart';
+import 'package:bank_contract/bank_contract.dart';
 
 abstract class BankNavigator {
   Future<BankRegistrationResult> startRegistrationFlow();

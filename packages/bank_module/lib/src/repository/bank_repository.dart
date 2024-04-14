@@ -1,4 +1,4 @@
-import '../model/bank_profile.dart';
+import 'package:bank_contract/bank_contract.dart';
 
 abstract class BankRepository {
   Future<double?> getBalance();

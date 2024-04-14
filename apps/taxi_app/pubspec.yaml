@@ -11,6 +11,12 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   provider: ^6.1.2
+  bank_contract:
+    path: ../../packages/bank_contract
+  bank_module:
+    path: ../../packages/bank_module
+  utils:
+    path: ../../packages/utils
 
 dev_dependencies:
   flutter_test:
