@@ -1,0 +1,9 @@
+name: lets_tree_shake
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .

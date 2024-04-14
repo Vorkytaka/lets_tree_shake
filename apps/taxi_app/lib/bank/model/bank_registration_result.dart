@@ -1,0 +1,4 @@
+enum BankRegistrationResult {
+  success,
+  fail,
+}
