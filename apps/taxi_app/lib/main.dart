@@ -1,13 +1,13 @@
 import 'package:bank_contract/bank_contract.dart';
 import 'package:bank_module/bank_module.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:taxi_app/main_screen.dart';
 import 'package:utils/utils.dart';
 
 BankManager? get bankManager {
-  // ignore: unnecessary_const
-  const isBankEnabled = const bool.fromEnvironment('BANK_ENABLED');
+  const isBankEnabled = appFlavor == null;
   if (!isBankEnabled) {
     return null;
   }

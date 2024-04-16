@@ -58,6 +58,25 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        unbanked {
+            resValue "string", "app_name", "unbanked taxi app"
+            applicationIdSuffix ".unbanked"
+        }
+    }
+
+    task deleteFreeSources(type: Delete) {
+        // Delete or replace something for flavor
+        // for example:
+        // delete fileTree(dir: 'src/bank/java', includes: ['**/*.java'])
+    }
+
+    afterEvaluate{
+        preBuild.dependsOn deleteFreeSources
+    }
 }
 
 flutter {
