@@ -7,8 +7,8 @@ import 'package:taxi_app/main_screen.dart';
 import 'package:utils/utils.dart';
 
 BankManager? get bankManager {
-  const isBankEnabled = appFlavor == null;
-  if (!isBankEnabled) {
+  const disableBank = appFlavor == 'unbanked';
+  if (disableBank) {
     return null;
   }
 

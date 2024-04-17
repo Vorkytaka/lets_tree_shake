@@ -59,10 +59,14 @@ android {
         }
     }
 
-    flavorDimensions "default"
+    flavorDimensions "app"
 
     productFlavors {
+        banked {
+            flavorDimensions "app"
+        }
         unbanked {
+            flavorDimensions "app"
             resValue "string", "app_name", "unbanked taxi app"
             applicationIdSuffix ".unbanked"
         }
